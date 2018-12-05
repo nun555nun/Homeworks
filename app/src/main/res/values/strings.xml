@@ -1,0 +1,33 @@
+<resources>
+    <string name="app_name">Homeworks</string>
+
+    <string-array name="sort">
+        <item>วันที่เพิ่ม</item>
+        <item>ชื่อ</item>
+        <item>วันที่สั่ง</item>
+        <item>วันที่ต้องส่ง</item>
+    </string-array>
+
+    <string-array name="subject">
+        <item>ภาษาไทย</item>
+        <item>คณิตศาสตร์</item>
+        <item>วิทยาศาสตร์</item>
+        <item>สังคมศึกษา ศาสนา และวัฒนธรรม</item>
+        <item>สุขศึกษาและพละศึกษา</item>
+        <item>ศิลปะ</item>
+        <item>การงานอาชีพและเทคโนโลยี</item>
+        <item>ภาษาต่างประเทศ</item>
+    </string-array>
+
+    <string-array name="image">
+        <item>thai.png</item>
+        <item>math.png</item>
+        <item>science.png</item>
+        <item>social.png</item>
+        <item>sport.png</item>
+        <item>art.png</item>
+        <item>home_economics.png</item>
+        <item>language.png</item>
+    </string-array>
+
+</resources>
