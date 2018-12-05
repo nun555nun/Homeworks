@@ -171,8 +171,17 @@ public class MainActivity extends AppCompatActivity {
         l.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                HomeworkItem item = mHomeworkItemList.get(position);
-                Toast.makeText(MainActivity.this,position,Toast.LENGTH_SHORT).show();
+                final HomeworkItem item = mHomeworkItemList.get(position);
+                Intent intent = new Intent(MainActivity.this, ItemInfoActivity.class);
+
+                intent.putExtra("id", item._id);
+                intent.putExtra("title", item.title);
+                intent.putExtra("subject", item.subject);
+                intent.putExtra("start", item.start);
+                intent.putExtra("deadline", item.deadline);
+                intent.putExtra("details", item.details);
+                intent.putExtra("image", item.image);
+                startActivity(intent);
             }
         });
         l.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {

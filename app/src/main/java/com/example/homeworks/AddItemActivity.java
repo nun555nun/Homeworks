@@ -52,7 +52,7 @@ public class AddItemActivity extends AppCompatActivity {
         mHelper = new DatabaseHelper(AddItemActivity.this);
         mDb = mHelper.getWritableDatabase();
 
-        startText = findViewById(R.id.start_text);
+        startText = findViewById(R.id.start_view);
         deadlineText = findViewById(R.id.deadline_text);
         mDate = Calendar.getInstance();
 
@@ -104,7 +104,7 @@ public class AddItemActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
-                ImageView imageView = findViewById(R.id.language_image);
+                ImageView imageView = findViewById(R.id.subject_image);
                 msubject = subject[position];
                 mfilename = image[position];
 
@@ -124,7 +124,7 @@ public class AddItemActivity extends AppCompatActivity {
             }
         });
 
-        Button addButton = findViewById(R.id.save_button);
+        Button addButton = findViewById(R.id.edit_button);
         addButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

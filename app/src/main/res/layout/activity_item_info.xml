@@ -5,8 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bg"
-    android:visibility="visible"
-    tools:context=".AddItemActivity">
+    tools:context=".ItemInfoActivity">
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="0dp"
@@ -31,8 +30,8 @@
             android:layout_marginEnd="8dp"
             android:layout_marginRight="8dp"
             android:text="รายละเอียด"
+            android:textColor="@android:color/background_dark"
             android:textSize="18sp"
-            app:layout_constraintBottom_toTopOf="@+id/details_edit"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/textView7"
@@ -52,15 +51,16 @@
 
         <Button
             android:id="@+id/edit_button"
-            android:layout_width="91dp"
+            android:layout_width="63dp"
             android:layout_height="42dp"
-            android:layout_marginBottom="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginBottom="12dp"
             android:background="@drawable/button"
-            android:text="เพิ่ม"
+            android:text="แก้ไข"
+            android:textColor="@android:color/holo_red_light"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@+id/details_edit"
-            app:layout_constraintHorizontal_bias="0.483"
-            app:layout_constraintStart_toStartOf="@+id/details_edit" />
+            app:layout_constraintEnd_toEndOf="parent" />
 
         <TextView
             android:id="@+id/textView7"
@@ -68,6 +68,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
             android:text="วันที่ต้องส่ง"
+            android:textColor="@android:color/background_dark"
             android:textSize="18sp"
             app:layout_constraintBottom_toTopOf="@+id/textView8"
             app:layout_constraintStart_toStartOf="@+id/textView6"
@@ -91,7 +92,7 @@
             app:layout_constraintVertical_bias="0.0" />
 
         <TextView
-            android:id="@+id/deadline_text"
+            android:id="@+id/deadline_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="deadline"
@@ -101,36 +102,6 @@
             app:layout_constraintStart_toStartOf="@+id/start_view"
             app:layout_constraintTop_toTopOf="@+id/textView7" />
 
-        <EditText
-            android:id="@+id/title_edit"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginRight="16dp"
-            android:ems="10"
-            android:gravity="center"
-            android:hint="หัวข้อ"
-            android:inputType="textPersonName"
-            android:textSize="14sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/subject_image"
-            app:layout_constraintTop_toTopOf="@+id/subject_image" />
-
-        <EditText
-            android:id="@+id/details_edit"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:ems="10"
-            android:gravity="top"
-            android:inputType="textMultiLine"
-            app:layout_constraintBottom_toTopOf="@+id/edit_button"
-            app:layout_constraintEnd_toEndOf="@+id/subject"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="@+id/textView8"
-            app:layout_constraintTop_toBottomOf="@+id/textView8" />
-
         <TextView
             android:id="@+id/textView6"
             android:layout_width="wrap_content"
@@ -139,27 +110,59 @@
             android:layout_marginLeft="8dp"
             android:layout_marginTop="32dp"
             android:text="วันที่สั่ง"
+            android:textColor="@android:color/background_dark"
             android:textSize="18sp"
             app:layout_constraintBottom_toTopOf="@+id/textView7"
             app:layout_constraintStart_toStartOf="@+id/subject_image"
             app:layout_constraintTop_toBottomOf="@+id/subject_image"
             app:layout_constraintVertical_chainStyle="spread_inside" />
 
-        <Spinner
-            android:id="@+id/subject"
+        <TextView
+            android:id="@+id/subject_view"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-
             android:gravity="center"
+            android:text="TextView"
+            android:textSize="18sp"
             app:layout_constraintBottom_toBottomOf="@+id/subject_image"
-            app:layout_constraintEnd_toEndOf="@+id/title_edit"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/title_edit"
-            app:layout_constraintTop_toBottomOf="@+id/title_edit"
-            app:layout_constraintVertical_bias="1.0">
+            app:layout_constraintEnd_toEndOf="@+id/title_view"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="@+id/title_view"
+            app:layout_constraintTop_toBottomOf="@+id/title_view" />
 
-        </Spinner>
+        <TextView
+            android:id="@+id/title_view"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            android:gravity="center"
+            android:text="TextView"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/subject_view"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/subject_image"
+            app:layout_constraintTop_toTopOf="@+id/subject_image" />
+
+        <TextView
+            android:id="@+id/detail_view"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginBottom="8dp"
+            android:text="TextView"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toTopOf="@+id/edit_button"
+            app:layout_constraintEnd_toEndOf="@+id/subject_view"
+            app:layout_constraintStart_toStartOf="@+id/textView8"
+            app:layout_constraintTop_toBottomOf="@+id/textView8" />
+
     </android.support.constraint.ConstraintLayout>
 
 </android.support.constraint.ConstraintLayout>

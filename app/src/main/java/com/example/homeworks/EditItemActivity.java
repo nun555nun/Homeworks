@@ -73,7 +73,7 @@ public class EditItemActivity extends AppCompatActivity {
         String image = intent.getStringExtra("image");
 
         titleEdit = findViewById(R.id.title_edit);
-        startText = findViewById(R.id.start_text);
+        startText = findViewById(R.id.start_view);
         deadlineText = findViewById(R.id.deadline_text);
         detailsEdit = findViewById(R.id.details_edit);
 
@@ -140,7 +140,7 @@ public class EditItemActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
-                ImageView imageView = findViewById(R.id.language_image);
+                ImageView imageView = findViewById(R.id.subject_image);
                 msubject = subjectA[position];
                 mfilename = imageA[position];
 
@@ -160,7 +160,7 @@ public class EditItemActivity extends AppCompatActivity {
             }
         });
 
-        Button saveButton = findViewById(R.id.save_button);
+        Button saveButton = findViewById(R.id.edit_button);
         saveButton.setText("บันทึก");
         saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
