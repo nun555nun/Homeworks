@@ -122,7 +122,7 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case 2:
                 Collections.sort(mHomeworkItemList, new Comparator<HomeworkItem>() {
-                    DateFormat f = new SimpleDateFormat("MM/dd/yyyy");
+                    DateFormat f = new SimpleDateFormat("dd/MM/yyyy");
                     @Override
                     public int compare(HomeworkItem o1, HomeworkItem o2) {
                         try {
@@ -136,7 +136,7 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case 3:
                 Collections.sort(mHomeworkItemList, new Comparator<HomeworkItem>() {
-                    DateFormat f = new SimpleDateFormat("MM/dd/yyyy");
+                    DateFormat f = new SimpleDateFormat("dd/MM/yyyy");
                     @Override
                     public int compare(HomeworkItem o1, HomeworkItem o2) {
                         try {
