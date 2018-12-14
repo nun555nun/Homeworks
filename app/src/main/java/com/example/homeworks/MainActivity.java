@@ -43,8 +43,8 @@ public class MainActivity extends AppCompatActivity {
 
 
     private DatabaseHelper mHelper;
-    private SQLiteDatabase mDb;//ตัวแทนฐานข้อมุล
-    private List<HomeworkItem> mHomeworkItemList;//
+    private SQLiteDatabase mDb;
+    private List<HomeworkItem> mHomeworkItemList;
     private Spinner mSortSpinner;
     private int format =0;
     @Override
@@ -54,27 +54,21 @@ public class MainActivity extends AppCompatActivity {
 
         mHelper = new DatabaseHelper(this);
         mDb = mHelper.getWritableDatabase();
-        loadPhoneData(format);
+        loadHomeworkData(format);
         setupListView();
-        Button addButton = findViewById(R.id.add_hw_button);
-        addButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(MainActivity.this,"เพิ่ม",Toast.LENGTH_SHORT).show();
-            }
-        });
 
         mSortSpinner = findViewById(R.id.sort);
 
         String[] sort = getResources().getStringArray(R.array.sort);
         ArrayAdapter<String> adapterSort = new ArrayAdapter<String>(this,
                 android.R.layout.simple_spinner_dropdown_item,sort);
+
         mSortSpinner.setAdapter(adapterSort);
         mSortSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 format=position;
-                loadPhoneData(format);
+                loadHomeworkData(format);
                 setupListView();
             }
 
@@ -96,11 +90,11 @@ public class MainActivity extends AppCompatActivity {
 
     protected void onResume() {
         super.onResume();
-        loadPhoneData(format);
+        loadHomeworkData(format);
         setupListView();
     }
 
-    private void loadPhoneData(int format) {
+    private void loadHomeworkData(int format) {
         Cursor c = mDb.query(TABLE_NAME, null, null, null, null, null, null);
         mHomeworkItemList = new ArrayList<>();
 
@@ -132,7 +126,7 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public int compare(HomeworkItem o1, HomeworkItem o2) {
                         try {
-                            return f.parse(o1.getDeadline()).compareTo(f.parse(o2.getDeadline()));
+                            return f.parse(o1.getStart()).compareTo(f.parse(o2.getStart()));
                         } catch (ParseException e) {
                             e.printStackTrace();
                         }
@@ -146,7 +140,7 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public int compare(HomeworkItem o1, HomeworkItem o2) {
                         try {
-                            return f.parse(o1.getStart()).compareTo(f.parse(o2.getStart()));
+                            return f.parse(o1.getDeadline()).compareTo(f.parse(o2.getDeadline()));
                         } catch (ParseException e) {
                             e.printStackTrace();
                         }
@@ -175,13 +169,8 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent = new Intent(MainActivity.this, ItemInfoActivity.class);
 
                 intent.putExtra("id", item._id);
-                intent.putExtra("title", item.title);
-                intent.putExtra("subject", item.subject);
-                intent.putExtra("start", item.start);
-                intent.putExtra("deadline", item.deadline);
-                intent.putExtra("details", item.details);
-                intent.putExtra("image", item.image);
                 startActivity(intent);
+
             }
         });
         l.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
@@ -224,7 +213,7 @@ public class MainActivity extends AppCompatActivity {
                                                                 COL_ID+" = ?",
                                                                 new String[]{String.valueOf(item._id)}
                                                         );
-                                                        loadPhoneData(format);
+                                                        loadHomeworkData(format);
                                                         setupListView();
                                                     }
                                                 })
@@ -237,7 +226,7 @@ public class MainActivity extends AppCompatActivity {
                         })
                         .show();
 
-                loadPhoneData(format);
+                loadHomeworkData(format);
                 setupListView();
 
                 return true;
