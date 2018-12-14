@@ -176,10 +176,7 @@ public class MainActivity extends AppCompatActivity {
         l.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, final int position, long id) {
-                String[] items = new String[]{
-                        "แก้ไข", "ลบ"
-                };
-
+                String[] items = new String[]{"ลบ"};
                 new AlertDialog.Builder(MainActivity.this)
                         .setItems(items, new DialogInterface.OnClickListener() {
                             @Override
@@ -187,22 +184,6 @@ public class MainActivity extends AppCompatActivity {
 
                                 final HomeworkItem item = mHomeworkItemList.get(position);
 
-                                switch (which) {
-                                    case 0://edit
-                                        Intent intent = new Intent(MainActivity.this, EditItemActivity.class);
-
-                                        intent.putExtra("id", item._id);
-                                        intent.putExtra("title", item.title);
-                                        intent.putExtra("subject", item.subject);
-                                        intent.putExtra("start", item.start);
-                                        intent.putExtra("deadline", item.deadline);
-                                        intent.putExtra("details", item.details);
-                                        intent.putExtra("image", item.image);
-
-                                        startActivity(intent);
-
-                                        break;
-                                    case 1://Delete
                                         new AlertDialog.Builder(MainActivity.this)
                                                 .setMessage("ต้องการลบข้อมูลนี้ ใช่หรือไม่")
                                                 .setPositiveButton("ใช่", new DialogInterface.OnClickListener() {
@@ -219,10 +200,7 @@ public class MainActivity extends AppCompatActivity {
                                                 })
                                                 .setNegativeButton("ไม่",null)
                                                 .show();
-
-                                        break;
                                 }
-                            }
                         })
                         .show();
 
